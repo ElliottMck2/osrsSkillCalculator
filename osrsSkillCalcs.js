@@ -6,13 +6,12 @@ var skills = ["Overall", "Attack", "Defence", "Strength", "Hitpoints", "Ranged",
     "Prayer", "Magic", "Cooking", "Woodcutting", "Fletching", "Fishing",
     "Firemaking", "Crafting", "Smithing", "Mining", "Herblore", "Agility",
     "Thieving", "Slayer", "Farming", "Runecrafting", "Hunter", "Construction",
-    "Clue Scrolls", "Clue Scrolls", "Clue Scrolls", "Clue Scrolls", "Clue Scrolls"
-];
+    "Clue Scrolls", "Clue Scrolls", "Clue Scrolls", "Clue Scrolls", "Clue Scrolls"];
 
-var totalText = "<strong>Total number of Runescape Accounts: </strong>",
+var       totalText = "<strong>Total number of Runescape Accounts: </strong>",
     playerCountText = "<strong>Players currently online: </strong>",
-    mostExperience = "<strong>Most Experienced Skill: </strong>";
-highestRank = "<strong>Highest Ranked Skill: </strong>";
+     mostExperience = "<strong>Most Experienced Skill: </strong>";
+        highestRank = "<strong>Highest Ranked Skill: </strong>";
 
 
 function requestStatData(playerName) {
@@ -64,19 +63,19 @@ function requestTotalAccounts() {
 
 function getTotalCombat() {
     // '+' is shorthand for parseFloat()
-    var hitpoints = +document.getElementById("hitpoints").value,
-        attack = +document.getElementById("attack").value,
-        strength = +document.getElementById("strength").value,
-        defence = +document.getElementById("defence").value,
-        ranged = +document.getElementById("ranged").value,
-        magic = +document.getElementById("magic").value,
-        prayer = +document.getElementById("prayer").value,
-        base = 0.25 * (defence + hitpoints + Math.floor(prayer / 2)),
-        melee = 0.325 * (attack + strength),
-        range = 0.325 * (Math.floor(ranged / 2) + ranged),
-        mage = 0.325 * (Math.floor(magic / 2) + magic),
+    var      hitpoints = +document.getElementById("hitpoints").value,
+                attack = +document.getElementById("attack").value,
+              strength = +document.getElementById("strength").value,
+               defence = +document.getElementById("defence").value,
+                ranged = +document.getElementById("ranged").value,
+                 magic = +document.getElementById("magic").value,
+                prayer = +document.getElementById("prayer").value,
+                  base = 0.25 * (defence + hitpoints + Math.floor(prayer / 2)),
+                 melee = 0.325 * (attack + strength),
+                 range = 0.325 * (Math.floor(ranged / 2) + ranged),
+                  mage = 0.325 * (Math.floor(magic / 2) + magic),
         decimalCombatLevel = base + Math.max(melee, range, mage),
-        finalCombatLevel = decimalCombatLevel.toFixed(2);
+          finalCombatLevel = decimalCombatLevel.toFixed(2);
     document.getElementById("combatLevel").innerHTML = "<strong>Combat Level: </strong>" + finalCombatLevel;
 }
 
