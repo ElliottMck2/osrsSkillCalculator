@@ -1,0 +1,65 @@
+body {
+    margin: 2%;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Montserrat", sans-serif
+}
+
+input[type="number"] {
+    width: 3em;
+    display: block;
+}
+
+input[type=text] {
+    width: 5em;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus,
+input[type=text]:not(:placeholder-shown) {
+    width: 10em;
+}
+
+#statContainer {
+    overflow: hidden;
+    position: relative;
+}
+
+#showAllStats,
+#combatCalc {
+    display: inline;
+    float: left;
+}
+
+#showAllStats {
+    margin-left: 5%;
+}
+
+#players {
+    position: fixed;
+    bottom: 0;
+    margin-bottom: 5%;
+}
+
+#skillRankings {
+    margin-top: 5%;
+}
+
+#highestRankingSkill,
+#highestExperienceSkill {
+    margin-top: 2%;
+}
