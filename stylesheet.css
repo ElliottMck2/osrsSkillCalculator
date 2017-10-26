@@ -63,3 +63,7 @@ input[type=text]:not(:placeholder-shown) {
 #highestExperienceSkill {
     margin-top: 2%;
 }
+
+div.flyingGnomeChild {
+    position: fixed;
+}
