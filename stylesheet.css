@@ -33,26 +33,36 @@ input[type=text]:focus,
 input[type=text]:not(:placeholder-shown) {
     width: 10em;
 }
-
-#statContainer {
-    overflow: hidden;
-    position: relative;
+button {
+	margin-top: 2%;
+	margin-bottom: 2%;
+	
 }
 
-#showAllStats,
+#statContainer {
+	width: 100%;
+}
+
+
 #combatCalc {
-    display: inline;
+	width: 50%;
     float: left;
+	display: inline;
 }
 
 #showAllStats {
-    margin-left: 5%;
-}
+   width: 50%;
+   float: right;
+   display: inline;
+  }
 
 #players {
-    position: fixed;
-    bottom: 0;
-    margin-bottom: 5%;
+    float: right;
+}
+
+#title {
+	width: 50%;
+	margin-bottom: 5%;
 }
 
 #skillRankings {
