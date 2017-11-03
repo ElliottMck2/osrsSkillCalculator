@@ -83,14 +83,12 @@ function getStatsForPlayer(data) {
     var skillName = 0,
         arrayOfStats = data.split(','),
         arrayOfExperience = [],
-        arrayOfExperienceLeft = [],
         arrayOfRank = [],
         displayStats = "";
     //sliced before clue scrolls
     var arrayOfStatsNoClues = arrayOfStats.slice(0, 48);
     for (var i = 1; i <= arrayOfStatsNoClues.length - 1; i++) {
         var xp = i + 1;
-
         if ((i + 1) % 2 === 0) {
             if (xp <= arrayOfStatsNoClues.length - 1) {
                 //split experience and rank into separate arrays
@@ -149,6 +147,7 @@ function indexOfMax(arr) {
     return maxIndex;
 }
 
+/* NOT USED CURRENTLY
 function indexOfSmallest(a) {
     var lowest = 0;
     for (var i = 1; i < a.length; i++) {
@@ -158,7 +157,9 @@ function indexOfSmallest(a) {
     }
     return lowest;
 }
-//NOT WORKING CURRENTLY
+*/
+
+/* NOT WORKING CURRENTLY
 function differenceToNextLevel(currentXp, neededXp) {
     var arrayOfDifference = [],
         difference = 0;
@@ -173,7 +174,7 @@ function differenceToNextLevel(currentXp, neededXp) {
     }
     return arrayOfDifference;
 }
-
+*/
 function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
@@ -198,14 +199,14 @@ function makeNewPosition() {
 
 function animateDiv() {
     var newq = makeNewPosition();
-    var oldq = $('.flyingGnomeChild').offset();
+    var q = $('.flyingGnomeChild');
+    var oldq = q.offset();
     var speed = calcSpeed([oldq.top, oldq.left], newq);
 
-    $('.flyingGnomeChild').animate({top: newq[0], left: newq[1]}, speed, function () {
+    q.animate({top: newq[0], left: newq[1]}, speed, function () {
         animateDiv();
     });
-
-};
+}
 
 function calcSpeed(prev, next) {
 
@@ -216,7 +217,5 @@ function calcSpeed(prev, next) {
 
     var speedModifier = 0.1;
 
-    var speed = Math.ceil(greatest / speedModifier);
-
-    return speed;
+    return Math.ceil(greatest / speedModifier);
 }

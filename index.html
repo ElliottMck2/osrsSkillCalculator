@@ -48,7 +48,7 @@
     <div id="showAllStats">
         <label for="RunescapeName">Runescape Name</label>
         <input type="text" id="RunescapeName" value="" placeholder="Search...">
-        <button type='submit' onkeydown="if (event.keyCode == 13)
+        <button type='submit' onkeydown="if (event.keyCode === 13)
 							document.getElementById('btnSearch').click()"
                 onclick="requestStatData(document.getElementById('RunescapeName').value)">Load Stats
         </button>
@@ -68,15 +68,18 @@
         </div>
     </div>
 </div>
+<div id="xpForEachLevel">
+
+</div>
+<div class='flyingGnomeChild'>
+    <img src="gnomeChild.gif">
+</div>
 <script type="text/JavaScript">
     document.getElementById("highestExperienceSkill").innerHTML = mostExperience;
     document.getElementById("highestRankingSkill").innerHTML = highestRank;
     requestPlayerCount();
     requestTotalAccounts();
+    experienceForEachLevel();
 </script>
-
-<div class='flyingGnomeChild'>
-    <img src="gnomeChild.gif">
-</div>
 </body>
 </html>

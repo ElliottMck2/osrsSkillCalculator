@@ -9,7 +9,8 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Montserrat", sans-serif
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.5em;
 }
 
 input[type="number"] {
@@ -56,11 +57,14 @@ button {
 }
 
 #players {
+    display: inline-block;
     float: right;
+    text-align: right;
 }
 
 #title {
 	width: 50%;
+    display: inline-block;
 	margin-bottom: 5%;
 }
 
