@@ -1,3 +1,4 @@
+"use strict";
 var statsUrl = 'http://services.runescape.com/m=hiscore_oldschool/index_lite.ws?player=',
     totalAccountUrl = 'http://services.runescape.com/m=account-creation-reports/rsusertotal.ws?callback=jQuery000000000000000_0000000000&_=0',
     onlinePlayersUrl = 'http://www.runescape.com/player_count.js?varname=iPlayerCount&callback=jQuery000000000000000_0000000000&_=0',
@@ -7,59 +8,49 @@ var skills = ["Overall", "Attack", "Defence", "Strength", "Hitpoints", "Ranged",
     "Firemaking", "Crafting", "Smithing", "Mining", "Herblore", "Agility",
     "Thieving", "Slayer", "Farming", "Runecrafting", "Hunter", "Construction",
     "Clue Scrolls", "Clue Scrolls", "Clue Scrolls", "Clue Scrolls", "Clue Scrolls"];
-
 var totalText = "<strong>Total number of Runescape Accounts: </strong>",
     playerCountText = "<strong>Players currently online: </strong>",
-    mostExperience = "<strong>Most Experienced Skill: </strong>";
-highestRank = "<strong>Highest Ranked Skill: </strong>";
+    mostExperience = "<strong>Most Experienced Skill: </strong>",
+    highestRank = "<strong>Highest Ranked Skill: </strong>";
 
-
-function requestStatData(playerName) {
-
-    var xhttp = new XMLHttpRequest();
-
-    xhttp.onreadystatechange = function () {
-        if (this.readyState === 4 && this.status === 200) {
-            getStatsForPlayer(this.responseText);
-        } else {
-            document.getElementById("dynamicStats").innerHTML = "Connection error or invalid Username";
-        }
-    };
-    xhttp.open("GET", proxyUrl + statsUrl + playerName, true);
-    xhttp.send();
-    document.getElementById("dynamicStats").innerHTML = "Loading...";
+function requestPlayerStats() {
+    var playerName = document.getElementById('RunescapeName').value;
+    getRequest(proxyUrl + statsUrl + playerName, getStatsForPlayer);
 }
 
-function requestPlayerCount() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState === 4 && this.status === 200) {
-            document.getElementById("onlinePlayers").innerHTML = playerCountText +
-                numberWithCommas(this.responseText.substring(this.responseText.lastIndexOf("(") + 1, this.responseText.lastIndexOf(")"))) + "<br />";
-        } else {
-            document.getElementById("onlinePlayers").innerHTML = "Failed to load player count";
-        }
-    };
-    xhttp.open("GET", proxyUrl + onlinePlayersUrl, true);
-    xhttp.send();
-    document.getElementById("onlinePlayers").innerHTML = "Loading...";
-}
+/* add a window load listener */
+window.addEventListener('load', function () {
 
-function requestTotalAccounts() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState === 4 && this.status === 200) {
-            //substring + 2 to clear quote marks
-            document.getElementById("totalPlayers").innerHTML = totalText +
-                this.responseText.substring(this.responseText.lastIndexOf(":\"") + 2, this.responseText.lastIndexOf("\"")) + "<br />";
-        } else {
-            document.getElementById("totalPlayers").innerHTML = "Failed to load total players";
-        }
+    function totalAccountData(data) {
+        document.getElementById("totalPlayers").innerHTML = totalText +
+            data.substring(data.lastIndexOf(":\"") + 2, data.lastIndexOf("\"")) + "<br />";
+
+    }
+
+    function currentPlayerCountData(data) {
+        document.getElementById("onlinePlayers").innerHTML = playerCountText +
+            numberWithCommas(data.substring(data.lastIndexOf("(") + 1, data.lastIndexOf(")"))) + "<br />";
+
+    }
+
+    //defined within eventListener for local scope
+    var requestTotalAccounts = function () {
+        // call getRequest with the url and the callback function
+        getRequest(proxyUrl + totalAccountUrl, totalAccountData);
+        //setTimeout(requestTotalAccounts, 5000); // set a timer (5s) to call this same function again
     };
-    xhttp.open("GET", proxyUrl + totalAccountUrl, true);
-    xhttp.send();
-    document.getElementById("totalPlayers").innerHTML = "Loading...";
-}
+    var requestCurrentPlayerCount = function () {
+        // call getRequest with the url and the callback function
+        getRequest(proxyUrl + onlinePlayersUrl, currentPlayerCountData);
+        //setTimeout(requestTotalAccounts, 5000); // set a timer (5s) to call this same function again
+    };
+
+
+    //calls the functions defined above
+    requestCurrentPlayerCount();
+    requestTotalAccounts();
+});
+
 
 function getTotalCombat() {
     // '+' is shorthand for parseFloat()

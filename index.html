@@ -12,74 +12,68 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="osrsSkillCalcs.js"></script>
 </head>
 <body>
 <div id="title">
 	<h3>OSRS Skill Calculations</h3>
 </div>
 <div id="players">
-    <div id="onlinePlayers">
+	<div id="onlinePlayers">
 
-    </div>
-    <div id="totalPlayers">
+	</div>
+	<div id="totalPlayers">
 
-    </div>
+	</div>
 </div>
 <div id="statContainer">
-    <div id="combatCalc">
-        <label for="hitpoints">Hitpoints</label>
-        <input type="number" id="hitpoints" value="10">
-        <label for="attack">Attack</label>
-        <input type="number" id="attack" value="1">
-        <label for="strength">Strength</label>
-        <input type="number" id="strength" value="1">
-        <label for="defence">Defence</label>
-        <input type="number" id="defence" value="1">
-        <label for="ranged">Ranged</label>
-        <input type="number" id="ranged" value="1">
-        <label for="magic">Magic</label>
-        <input type="number" id="magic" value="1">
-        <label for="prayer">Prayer</label>
-        <input type="number" id="prayer" value="1">
-        <button onclick="getTotalCombat()">Calculate</button>
-        <p id="combatLevel"><strong>Combat Level:</strong></p>
-    </div>
-    <div id="showAllStats">
-        <label for="RunescapeName">Runescape Name</label>
-        <input type="text" id="RunescapeName" value="" placeholder="Search...">
-        <button type='submit' onkeydown="if (event.keyCode === 13)
-							document.getElementById('btnSearch').click()"
-                onclick="requestStatData(document.getElementById('RunescapeName').value)">Load Stats
-        </button>
-        <div id="dynamicStats">
+	<div id="combatCalc">
+		<label for="hitpoints">Hitpoints</label>
+		<input type="number" id="hitpoints" value="10">
+		<label for="attack">Attack</label>
+		<input type="number" id="attack" value="1">
+		<label for="strength">Strength</label>
+		<input type="number" id="strength" value="1">
+		<label for="defence">Defence</label>
+		<input type="number" id="defence" value="1">
+		<label for="ranged">Ranged</label>
+		<input type="number" id="ranged" value="1">
+		<label for="magic">Magic</label>
+		<input type="number" id="magic" value="1">
+		<label for="prayer">Prayer</label>
+		<input type="number" id="prayer" value="1">
+		<button onclick="getTotalCombat()">Calculate</button>
+		<p id="combatLevel"><strong>Combat Level:</strong></p>
+	</div>
+	<div id="showAllStats">
+		<label for="RunescapeName">Runescape Name</label>
+		<input type="text" id="RunescapeName" value="" placeholder="Search...">
+		<button type='submit' onkeydown="if (event.keyCode === 13)
+								document.getElementById('btnSearch').click()"
+				onclick="requestPlayerStats()">Load Stats
+		</button>
+		<div id="dynamicStats">
 
-        </div>
-        <div id="skillRankings">
-            <div id="highestRankingSkill">
+		</div>
+		<div id="skillRankings">
+			<div id="highestRankingSkill">
 
-            </div>
-            <div id="highestExperienceSkill">
+			</div>
+			<div id="highestExperienceSkill">
 
-            </div>
-            <div id="closestToLevelUp">
+			</div>
+			<div id="closestToLevelUp">
 
-            </div>
-        </div>
-    </div>
+			</div>
+		</div>
+	</div>
 </div>
 <div id="xpForEachLevel">
 
 </div>
 <div class='flyingGnomeChild'>
-    <img src="gnomeChild.gif">
+	<img src="gnomeChild.gif">
 </div>
-<script type="text/JavaScript">
-    document.getElementById("highestExperienceSkill").innerHTML = mostExperience;
-    document.getElementById("highestRankingSkill").innerHTML = highestRank;
-    requestPlayerCount();
-    requestTotalAccounts();
-    experienceForEachLevel();
-</script>
+<script type="text/javascript" src="functions.js"></script>
+<script type="text/javascript" src="osrsSkillCalcs.js"></script>
 </body>
 </html>
