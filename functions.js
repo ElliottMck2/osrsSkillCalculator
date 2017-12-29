@@ -39,8 +39,8 @@ function getRequest(url, callbackFunction, config) {
     httpRequest.onreadystatechange = function () {
         //ready state 4 and status 200 response are successful http requests
         var completed = 4, successful = 200, returnValue;
-        if (httpRequest.readyState == completed) {
-            if (httpRequest.status == successful) {
+        if (httpRequest.readyState === completed) {
+            if (httpRequest.status === successful) {
                 if (useXML) {
                     returnValue = httpRequest.responseXML;
                 } else if (useJSON) {

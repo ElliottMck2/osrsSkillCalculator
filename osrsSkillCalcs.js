@@ -69,13 +69,13 @@ function getTotalCombat() {
         decimalCombatLevel = base + mainCombatStyle,
         finalCombatLevel = decimalCombatLevel.toFixed(2),
         combatStyleName = "";
-    if (mainCombatStyle == melee) {
+    if (mainCombatStyle === melee) {
         combatStyleName = "Melee";
     }
-    else if (mainCombatStyle == range) {
+    else if (mainCombatStyle === range) {
         combatStyleName = "Range";
     }
-    else if (mainCombatStyle == mage) {
+    else if (mainCombatStyle === mage) {
         combatStyleName = "Magic";
     }
     if (melee + range + mage === 1.3) {
@@ -103,7 +103,7 @@ function getStatsForPlayer(data) {
                 arrayOfRank.push(parseInt(arrayOfStatsNoClues[xp].split('\n').slice(-1).join(' ')));
                 //arrayOfExperienceLeft = differenceToNextLevel(arrayOfExperience,experienceForEachLevel());
             }
-            if (skills[skillName] == 'Firemaking') {
+            if (skills[skillName] === 'Firemaking') {
                 displayStats += displayStats = "</ul> <ul class='rightColSkill'>";
             }
             displayStats += "<li><img src='skill-icon/" + skills[skillName] + "-icon.png' class='icon'><strong>"
