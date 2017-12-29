@@ -14,6 +14,11 @@ var totalText = "<strong>Total number of Runescape Accounts: </strong>",
     highestRank = "<strong>Highest Ranked Skill: </strong>";
 
 function requestPlayerStats() {
+    document.getElementById("dynamicStats").innerHTML = "<img src=\"gnomeChild.gif\">";
+    document.getElementById("clueScrolls").innerHTML = "";
+    document.getElementById("highestExperienceSkill").innerHTML = "";
+    document.getElementById("highestRankingSkill").innerHTML = "";
+    document.getElementById("clueScrolls").innerHTML = "";
     var playerName = document.getElementById('RunescapeName').value;
     getRequest(proxyUrl + statsUrl + playerName, getStatsForPlayer);
 }
