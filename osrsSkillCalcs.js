@@ -87,7 +87,7 @@ function getStatsForPlayer(data) {
                 arrayOfRank.push(parseInt(arrayOfStatsNoClues[xp].split('\n').slice(-1).join(' ')));
                 //arrayOfExperienceLeft = differenceToNextLevel(arrayOfExperience,experienceForEachLevel());
             }
-            displayStats += "<strong>" + skills[skillName] + "</strong>" + ": " + arrayOfStats[i] + "<br />";
+            displayStats += "<img src='skill-icon/" + skills[skillName] + "-icon.png' class='icon'><strong>" + skills[skillName] + "</strong>" + ": " + arrayOfStats[i] + "<br />";
             skillName++;
         }
     }
@@ -123,20 +123,6 @@ function experienceForEachLevel() {
     return experienceArray;
 }
 
-function indexOfMax(arr) {
-    if (arr.length === 0) {
-        return -1;
-    }
-    var max = arr[0];
-    var maxIndex = 0;
-    for (var i = 1; i < arr.length; i++) {
-        if (arr[i] > max) {
-            maxIndex = i;
-            max = arr[i];
-        }
-    }
-    return maxIndex;
-}
 
 /* NOT USED CURRENTLY
 function indexOfSmallest(a) {
@@ -166,47 +152,4 @@ function differenceToNextLevel(currentXp, neededXp) {
     return arrayOfDifference;
 }
 */
-function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
 
-$(document).ready(function () {
-    animateDiv();
-
-});
-
-function makeNewPosition() {
-
-    // Get viewport dimensions (remove the dimension of the div)
-    var h = $(window).height() - 50;
-    var w = $(window).width() - 50;
-
-    var nh = Math.floor(Math.random() * h);
-    var nw = Math.floor(Math.random() * w);
-
-    return [nh, nw];
-
-}
-
-function animateDiv() {
-    var newq = makeNewPosition();
-    var q = $('.flyingGnomeChild');
-    var oldq = q.offset();
-    var speed = calcSpeed([oldq.top, oldq.left], newq);
-
-    q.animate({top: newq[0], left: newq[1]}, speed, function () {
-        animateDiv();
-    });
-}
-
-function calcSpeed(prev, next) {
-
-    var x = Math.abs(prev[1] - next[1]);
-    var y = Math.abs(prev[0] - next[0]);
-
-    var greatest = x > y ? x : y;
-
-    var speedModifier = 0.1;
-
-    return Math.ceil(greatest / speedModifier);
-}

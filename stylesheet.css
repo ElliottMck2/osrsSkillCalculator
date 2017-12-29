@@ -54,6 +54,7 @@ button {
    width: 50%;
    float: right;
    display: inline;
+    white-space: nowrap;
 }
 
 #players {
@@ -79,4 +80,10 @@ button {
 
 div.flyingGnomeChild {
     position: fixed;
+}
+
+.icon {
+    margin-right: 10px;
+    width: 23px;
+    height: 23px;
 }
