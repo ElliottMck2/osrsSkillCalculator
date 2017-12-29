@@ -70,16 +70,16 @@ function getTotalCombat() {
         finalCombatLevel = decimalCombatLevel.toFixed(2),
         combatStyleName = "";
     if (mainCombatStyle === melee) {
-        combatStyleName = "Melee";
+        combatStyleName = "<img src=\'skill-icon/Dragon-battleaxe.png\' class='icon'>Melee";
     }
     else if (mainCombatStyle === range) {
-        combatStyleName = "Range";
+        combatStyleName = "<img src=\'skill-icon/Dark-bow.png\' class='icon'>Range";
     }
     else if (mainCombatStyle === mage) {
-        combatStyleName = "Magic";
+        combatStyleName = "<img src=\'skill-icon/Zamorak-staff.png\' class='icon'>Magic";
     }
     if (melee + range + mage === 1.3) {
-        combatStyleName = "Skiller";
+        combatStyleName = "<img src=\'skill-icon/Logs.png\' class='icon'>Skiller";
     }
 
     document.getElementById("combatLevel").innerHTML = "<strong>Combat Level: </strong>" + finalCombatLevel;
@@ -91,6 +91,13 @@ function getStatsForPlayer(data) {
         arrayOfStats = data.split(','),
         arrayOfExperience = [],
         arrayOfRank = [],
+        easyClue = arrayOfStats[49].split("\n", 1) > 0 ? arrayOfStats[49].split("\n", 1) : 0,
+        mediumClue = arrayOfStats[50].split("\n", 1) > 0 ? arrayOfStats[50].split("\n", 1) : 0,
+        hardClue = arrayOfStats[54].split("\n", 1) > 0 ? arrayOfStats[54].split("\n", 1) : 0,
+        eliteClue = arrayOfStats[56].split("\n", 1) > 0 ? arrayOfStats[56].split("\n", 1) : 0,
+        masterClue = arrayOfStats[57].split("\n", 1) > 0 ? arrayOfStats[57].split("\n", 1) : 0,
+        // +clue syntax converts to number for addition
+        allClue = +easyClue + +mediumClue + +hardClue + +eliteClue + +masterClue,
         displayStats = "<ul class='leftColSkill'>";
     //sliced before clue scrolls
     var arrayOfStatsNoClues = arrayOfStats.slice(0, 48);
@@ -101,7 +108,6 @@ function getStatsForPlayer(data) {
                 //split experience and rank into separate arrays
                 arrayOfExperience.push(parseInt(arrayOfStatsNoClues[xp].split('\n').slice(0, -1).join(' ')));
                 arrayOfRank.push(parseInt(arrayOfStatsNoClues[xp].split('\n').slice(-1).join(' ')));
-                //arrayOfExperienceLeft = differenceToNextLevel(arrayOfExperience,experienceForEachLevel());
             }
             if (skills[skillName] === 'Firemaking') {
                 displayStats += displayStats = "</ul> <ul class='rightColSkill'>";
@@ -123,12 +129,15 @@ function getStatsForPlayer(data) {
     document.getElementById("ranged").value = arrayOfStats[11];
     document.getElementById("magic").value = arrayOfStats[15];
     document.getElementById("prayer").value = arrayOfStats[13];
+    document.getElementById("clueScrolls").innerHTML = "<img src=\"skill-icon/Clue-scroll.png\" class='icon'>" +
+        "All Clues: " + allClue + "\n<br /> Easy Clues: " + easyClue + "\n<br /> Medium Clues: " + mediumClue + "\n<br />" +
+        " Hard Clues: " + hardClue + "\n<br /> Elite Clues: " + eliteClue + "\n<br /> Master Clues: " + masterClue;
     document.getElementById("highestExperienceSkill").innerHTML = mostExperience + skills[indexOfMax(arrayOfExperience.slice(1)) + 1];
     document.getElementById("highestRankingSkill").innerHTML = highestRank + skills[indexOfMax(arrayOfRank.slice(1)) + 1];
     //recalculates combat level
     getTotalCombat();
     //not currently used
-    console.log(experienceForEachLevel());
+    experienceForEachLevel();
     return arrayOfStats;
 }
 

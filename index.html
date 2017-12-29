@@ -48,7 +48,7 @@
 	<div id="showAllStats">
 		<label for="RunescapeName">Runescape Name</label>
 		<input type="text" id="RunescapeName" value="" placeholder="Search..."
-			   onkeydown=" if (event.which == 13 || event.keyCode == 13){
+               onkeydown=" if (event.which === 13 || event.keyCode === 13){
 								requestPlayerStats();}">
 		<button type='submit' id='btnSearch'
 				onclick="requestPlayerStats()">Load Stats
@@ -56,6 +56,9 @@
 		<div id="dynamicStats">
 
 		</div>
+        <div id="clueScrolls">
+
+        </div>
 		<div id="skillRankings">
             <div id="highestExperienceSkill">
 

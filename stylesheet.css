@@ -80,7 +80,8 @@ button {
 }
 
 #highestRankingSkill,
-#highestExperienceSkill {
+#highestExperienceSkill,
+#clueScrolls {
     margin-top: 2%;
     float: left;
     width: 100%;
