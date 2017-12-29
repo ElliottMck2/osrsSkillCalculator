@@ -48,6 +48,7 @@ button {
 	width: 50%;
     float: left;
 	display: inline;
+    padding-left: 5%;
 }
 
 #showAllStats {
@@ -71,11 +72,14 @@ button {
 
 #skillRankings {
     margin-top: 5%;
+
 }
 
 #highestRankingSkill,
 #highestExperienceSkill {
     margin-top: 2%;
+    float: left;
+    width: 100%;
 }
 
 div.flyingGnomeChild {
@@ -86,4 +90,16 @@ div.flyingGnomeChild {
     margin-right: 10px;
     width: 23px;
     height: 23px;
+}
+
+ul.leftColSkill {
+    float: left;
+    width: 50%;
+    list-style-type: none;
+}
+
+ul.rightColSkill {
+    float: right;
+    width: 50%;
+    list-style-type: none;
 }

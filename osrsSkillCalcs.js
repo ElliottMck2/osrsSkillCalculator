@@ -75,7 +75,7 @@ function getStatsForPlayer(data) {
         arrayOfStats = data.split(','),
         arrayOfExperience = [],
         arrayOfRank = [],
-        displayStats = "";
+        displayStats = "<ul class='leftColSkill'>";
     //sliced before clue scrolls
     var arrayOfStatsNoClues = arrayOfStats.slice(0, 48);
     for (var i = 1; i <= arrayOfStatsNoClues.length - 1; i++) {
@@ -87,11 +87,18 @@ function getStatsForPlayer(data) {
                 arrayOfRank.push(parseInt(arrayOfStatsNoClues[xp].split('\n').slice(-1).join(' ')));
                 //arrayOfExperienceLeft = differenceToNextLevel(arrayOfExperience,experienceForEachLevel());
             }
-            displayStats += "<img src='skill-icon/" + skills[skillName] + "-icon.png' class='icon'><strong>" + skills[skillName] + "</strong>" + ": " + arrayOfStats[i] + "<br />";
-            skillName++;
-        }
-    }
+            if (skills[skillName] == 'Firemaking') {
+                displayStats += displayStats = "</ul> <ul class='rightColSkill'>";
+            }
+            displayStats += "<li><img src='skill-icon/" + skills[skillName] + "-icon.png' class='icon'><strong>"
+                + skills[skillName] + "</strong>" + ": " + arrayOfStats[i] + "</li>";
 
+            skillName++;
+
+        }
+
+    }
+    displayStats += "</ul>";
     document.getElementById("dynamicStats").innerHTML = displayStats;
     document.getElementById("hitpoints").value = arrayOfStats[9];
     document.getElementById("attack").value = arrayOfStats[3];
