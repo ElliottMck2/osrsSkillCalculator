@@ -65,9 +65,25 @@ function getTotalCombat() {
         melee = 0.325 * (attack + strength),
         range = 0.325 * (Math.floor(ranged / 2) + ranged),
         mage = 0.325 * (Math.floor(magic / 2) + magic),
-        decimalCombatLevel = base + Math.max(melee, range, mage),
-        finalCombatLevel = decimalCombatLevel.toFixed(2);
+        mainCombatStyle = Math.max(melee, range, mage),
+        decimalCombatLevel = base + mainCombatStyle,
+        finalCombatLevel = decimalCombatLevel.toFixed(2),
+        combatStyleName = "";
+    if (mainCombatStyle == melee) {
+        combatStyleName = "Melee";
+    }
+    else if (mainCombatStyle == range) {
+        combatStyleName = "Range";
+    }
+    else if (mainCombatStyle == mage) {
+        combatStyleName = "Magic";
+    }
+    if (melee + range + mage === 1.3) {
+        combatStyleName = "Skiller";
+    }
+
     document.getElementById("combatLevel").innerHTML = "<strong>Combat Level: </strong>" + finalCombatLevel;
+    document.getElementById("combatType").innerHTML = "<strong>Main Combat Style: </strong>" + combatStyleName;
 }
 
 function getStatsForPlayer(data) {
@@ -111,21 +127,25 @@ function getStatsForPlayer(data) {
     document.getElementById("highestRankingSkill").innerHTML = highestRank + skills[indexOfMax(arrayOfRank.slice(1)) + 1];
     //recalculates combat level
     getTotalCombat();
+    //not currently used
+    console.log(experienceForEachLevel());
     return arrayOfStats;
 }
 
 function experienceForEachLevel() {
     var lvl,
         experienceArray = [],
+        xp,
         points = 0,
         minlevel = 2, // first level to display
         maxlevel = 200; // last level to display
 
     for (lvl = 1; lvl <= maxlevel; lvl++) {
         points += Math.floor(lvl + 300 * Math.pow(2, lvl / 7.));
-        if (lvl >= minlevel)
-            experienceArray.push(Math.floor(points / 4));
-
+        xp = Math.floor(points / 4);
+        if (lvl >= minlevel) {
+            experienceArray.push("level:" + (lvl + 1) + " - " + xp + "xp");
+        }
     }
     return experienceArray;
 }
