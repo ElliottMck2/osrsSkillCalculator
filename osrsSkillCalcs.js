@@ -14,7 +14,7 @@ var totalText = "<strong>Total number of Runescape Accounts: </strong>",
     highestRank = "<strong>Highest Ranked Skill: </strong>";
 
 function requestPlayerStats() {
-    document.getElementById("dynamicStats").innerHTML = "<img src=\"gnomeChild.gif\">";
+    document.getElementById("dynamicStats").innerHTML = "<img src=\"images/gnome-child.gif\">";
     document.getElementById("clueScrolls").innerHTML = "";
     document.getElementById("highestExperienceSkill").innerHTML = "";
     document.getElementById("highestRankingSkill").innerHTML = "";
@@ -75,16 +75,16 @@ function getTotalCombat() {
         finalCombatLevel = decimalCombatLevel.toFixed(2),
         combatStyleName = "";
     if (mainCombatStyle === melee) {
-        combatStyleName = "<img src=\'skill-icon/Dragon-battleaxe.png\' class='icon'>Melee";
+        combatStyleName = "<img src=\'images/Dragon-battleaxe.png\' class='icon'>Melee";
     }
     else if (mainCombatStyle === range) {
-        combatStyleName = "<img src=\'skill-icon/Dark-bow.png\' class='icon'>Range";
+        combatStyleName = "<img src=\'images/Dark-bow.png\' class='icon'>Range";
     }
     else if (mainCombatStyle === mage) {
-        combatStyleName = "<img src=\'skill-icon/Zamorak-staff.png\' class='icon'>Magic";
+        combatStyleName = "<img src=\'images/Zamorak-staff.png\' class='icon'>Magic";
     }
     if (melee + range + mage === 1.3) {
-        combatStyleName = "<img src=\'skill-icon/Logs.png\' class='icon'>Skiller";
+        combatStyleName = "<img src=\'images/Logs.png\' class='icon'>Skiller";
     }
 
     document.getElementById("combatLevel").innerHTML = "<strong>Combat Level: </strong>" + finalCombatLevel;
@@ -117,7 +117,7 @@ function getStatsForPlayer(data) {
             if (skills[skillName] === 'Firemaking') {
                 displayStats += displayStats = "</ul> <ul class='rightColSkill'>";
             }
-            displayStats += "<li><img src='skill-icon/" + skills[skillName] + "-icon.png' class='icon'><strong>"
+            displayStats += "<li><img src='images/" + skills[skillName] + "-icon.png' class='icon'><strong>"
                 + skills[skillName] + "</strong>" + ": " + arrayOfStats[i] + "</li>";
 
             skillName++;
@@ -134,7 +134,7 @@ function getStatsForPlayer(data) {
     document.getElementById("ranged").value = arrayOfStats[11];
     document.getElementById("magic").value = arrayOfStats[15];
     document.getElementById("prayer").value = arrayOfStats[13];
-    document.getElementById("clueScrolls").innerHTML = "<img src=\"skill-icon/Clue-scroll.png\" class='icon'>" +
+    document.getElementById("clueScrolls").innerHTML = "<img src=\"images/Clue-scroll.png\" class='icon'>" +
         "All Clues: " + allClue + "\n<br /> Easy Clues: " + easyClue + "\n<br /> Medium Clues: " + mediumClue + "\n<br />" +
         " Hard Clues: " + hardClue + "\n<br /> Elite Clues: " + eliteClue + "\n<br /> Master Clues: " + masterClue;
     document.getElementById("highestExperienceSkill").innerHTML = mostExperience + skills[indexOfMax(arrayOfExperience.slice(1)) + 1];
