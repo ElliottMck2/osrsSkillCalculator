@@ -87,10 +87,6 @@ button {
     width: 50%;
 }
 
-div.flyingGnomeChild {
-    position: fixed;
-}
-
 .icon {
     margin-right: 10px;
     width: 23px;
