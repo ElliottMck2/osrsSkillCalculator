@@ -1,3 +1,4 @@
+'use strict';
 //reusable function to process a http request and return the data as html, xml or json
 function getRequest(url, callbackFunction, config) {
     'use strict';

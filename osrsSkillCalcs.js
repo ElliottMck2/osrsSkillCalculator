@@ -1,7 +1,7 @@
 "use strict";
 var statsUrl = 'http://services.runescape.com/m=hiscore_oldschool/index_lite.ws?player=',
     totalAccountUrl = 'http://services.runescape.com/m=account-creation-reports/rsusertotal.ws?callback=jQuery000000000000000_0000000000&_=0',
-    onlinePlayersUrl = 'http://www.runescape.com/player_count.js?varname=iPlayerCount&callback=jQuery000000000000000_0000000000&_=0',
+    onlinePlayersUrl = 'http://oldschool.runescape.com/',
     proxyUrl = 'https://cors-anywhere.herokuapp.com/';
 var skills = ["Overall", "Attack", "Defence", "Strength", "Hitpoints", "Ranged",
     "Prayer", "Magic", "Cooking", "Woodcutting", "Fletching", "Fishing",
@@ -33,8 +33,9 @@ window.addEventListener('load', function () {
     }
 
     function currentPlayerCountData(data) {
+        //taken directly from the osrs website
         document.getElementById("onlinePlayers").innerHTML = playerCountText +
-            numberWithCommas(data.substring(data.lastIndexOf("(") + 1, data.lastIndexOf(")"))) + "<br />";
+            numberWithCommas(data.substring(data.indexOf("There are currently ") + 20, data.indexOf(" people playing")));
 
     }
 
