@@ -168,6 +168,10 @@ window.addEventListener('load', function () {
     document.getElementById('btnSearch').onclick = function () {
         requestPlayerStats(playerName.value)
     };
+    document.getElementById('btnCombatCalc').onclick = function () {
+        getTotalCombat()
+    };
+
 
     /* NOT USED CURRENTLY
     function indexOfSmallest(a) {
