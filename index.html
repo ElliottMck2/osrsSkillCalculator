@@ -18,59 +18,56 @@
     <h1>OSRS Skill Calculations</h1>
 </div>
 <div id="players">
-	<div id="onlinePlayers">
+    <div id="onlinePlayers">
+    
+    </div>
+    <div id="totalPlayers">
 
-	</div>
-	<div id="totalPlayers">
-
-	</div>
+    </div>
 </div>
 <div id="statContainer">
-	<div id="combatCalc">
-		<label for="hitpoints"><img src="images/Hitpoints-icon.png" class='icon'>Hitpoints</label>
-		<input type="number" id="hitpoints" value="10">
-		<label for="attack"><img src="images/Attack-icon.png" class='icon'>Attack</label>
-		<input type="number" id="attack" value="1">
-		<label for="strength"><img src="images/Strength-icon.png" class='icon'>Strength</label>
-		<input type="number" id="strength" value="1">
-		<label for="defence"><img src="images/Defence-icon.png" class='icon'>Defence</label>
-		<input type="number" id="defence" value="1">
-		<label for="ranged"><img src="images/Ranged-icon.png" class='icon'>Ranged</label>
-		<input type="number" id="ranged" value="1">
-		<label for="magic"><img src="images/Magic-icon.png" class='icon'>Magic</label>
-		<input type="number" id="magic" value="1">
-		<label for="prayer"><img src="images/Prayer-icon.png" class='icon'>Prayer</label>
-		<input type="number" id="prayer" value="1">
-		<button onclick="getTotalCombat()">Calculate</button>
-		<p id="combatLevel"><strong>Combat Level:</strong></p>
+    <div id="combatCalc">
+        <label for="hitpoints"><img src="images/Hitpoints-icon.png" class='icon'>Hitpoints</label>
+        <input type="number" id="hitpoints" value="10">
+        <label for="attack"><img src="images/Attack-icon.png" class='icon'>Attack</label>
+        <input type="number" id="attack" value="1">
+        <label for="strength"><img src="images/Strength-icon.png" class='icon'>Strength</label>
+        <input type="number" id="strength" value="1">
+        <label for="defence"><img src="images/Defence-icon.png" class='icon'>Defence</label>
+        <input type="number" id="defence" value="1">
+        <label for="ranged"><img src="images/Ranged-icon.png" class='icon'>Ranged</label>
+        <input type="number" id="ranged" value="1">
+        <label for="magic"><img src="images/Magic-icon.png" class='icon'>Magic</label>
+        <input type="number" id="magic" value="1">
+        <label for="prayer"><img src="images/Prayer-icon.png" class='icon'>Prayer</label>
+        <input type="number" id="prayer" value="1">
+        <button onclick="getTotalCombat()">Calculate</button>
+        <p id="combatLevel"><strong>Combat Level:</strong></p>
         <p id="combatType"><strong>Main Combat Style:</strong></p>
-	</div>
-	<div id="showAllStats">
-		<label for="RunescapeName">Runescape Name</label>
-		<input type="text" id="RunescapeName" value="" placeholder="Search..."
-               onkeydown=" if (event.which === 13 || event.keyCode === 13){
-								requestPlayerStats();}">
-		<button type='submit' id='btnSearch'
-				onclick="requestPlayerStats()">Load Stats
-		</button>
-		<div id="dynamicStats">
+    </div>
+    <div id="showAllStats">
+        <label for="RunescapeName">Runescape Name</label>
+        <input type="text" id="RunescapeName" value="" placeholder="Search...">
+        <button type='submit' id='btnSearch'>Load Stats
+        </button>
+        <div id="dynamicStats">
 
-		</div>
+        </div>
         <div id="clueScrolls">
 
         </div>
-		<div id="skillRankings">
+        <div id="skillRankings">
             <div id="highestExperienceSkill">
 
-			</div>
+            </div>
             <div id="highestRankingSkill">
 
             </div>
-			<div id="closestToLevelUp">
+            <div id="closestToLevelUp">
 
-			</div>
-		</div>
-	</div>
+            </div>
+        </div>
+    </div>
 </div>
 <div id="xpForEachLevel">
 
