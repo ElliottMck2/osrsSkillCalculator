@@ -2,7 +2,7 @@
 //reusable function to process a http request and return the data as html, xml or json
 function getRequest(url, callbackFunction, config) {
     'use strict';
-    var httpRequest, useJSON, useXML,
+    let httpRequest, useJSON, useXML,
         responseType = config && config.responseType;
 
     useJSON = responseType === 'json'; // true if responseType is 'json'
@@ -39,7 +39,7 @@ function getRequest(url, callbackFunction, config) {
     }
     httpRequest.onreadystatechange = function () {
         //ready state 4 and status 200 response are successful http requests
-        var completed = 4, successful = 200, returnValue;
+        let completed = 4, successful = 200, returnValue;
         if (httpRequest.readyState === completed) {
             if (httpRequest.status === successful) {
                 if (useXML) {
@@ -51,7 +51,7 @@ function getRequest(url, callbackFunction, config) {
                 }
                 callbackFunction(returnValue);
             } else {
-                console.log('There was a problem with the request.');
+                document.getElementById("dynamicStats").innerHTML = "<i>There was a problem with the request.</i>";
             }
         }
     };
@@ -66,9 +66,9 @@ function indexOfMax(arr) {
     if (arr.length === 0) {
         return -1;
     }
-    var max = arr[0];
-    var maxIndex = 0;
-    for (var i = 1; i < arr.length; i++) {
+    let max = arr[0];
+    let maxIndex = 0;
+    for (let i = 1; i < arr.length; i++) {
         if (arr[i] > max) {
             maxIndex = i;
             max = arr[i];

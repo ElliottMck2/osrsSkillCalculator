@@ -57,14 +57,12 @@ button {
 
 #showAllStats {
     width: 70%;
-    float: right;
-    display: inline;
+    display: inline-block;
     white-space: nowrap;
 }
 
 #players {
     display: inline-block;
-    float: right;
     text-align: right;
 }
 
@@ -83,7 +81,7 @@ button {
 #highestExperienceSkill,
 #clueScrolls {
     margin-top: 2%;
-    float: left;
+    display: inline-block;
     width: 50%;
 }
 
@@ -94,13 +92,14 @@ button {
 }
 
 ul.leftColSkill {
-    float: left;
+    display: inline-block;
     width: 50%;
     list-style-type: none;
     padding: 0;
 }
 
 ul.rightColSkill {
+    display: inline-block;
     float: right;
     width: 50%;
     list-style-type: none;

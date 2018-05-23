@@ -1,6 +1,6 @@
 window.addEventListener('load', function () {
     "use strict";
-    var statsUrl = 'http://services.runescape.com/m=hiscore_oldschool/index_lite.ws?player=',
+    let statsUrl = 'http://services.runescape.com/m=hiscore_oldschool/index_lite.ws?player=',
         totalAccountUrl = 'http://services.runescape.com/m=account-creation-reports/rsusertotal.ws?callback=jQuery000000000000000_0000000000&_=0',
         onlinePlayersUrl = 'http://oldschool.runescape.com/',
         proxyUrl = 'https://cors-anywhere.herokuapp.com/',
@@ -38,12 +38,12 @@ window.addEventListener('load', function () {
     }
 
     //defined within eventListener for local scope
-    var requestTotalAccounts = function () {
+    let requestTotalAccounts = function () {
         // call getRequest with the url and the callback function
         getRequest(proxyUrl + totalAccountUrl, totalAccountData);
         //setTimeout(requestTotalAccounts, 5000); // set a timer (5s) to call this same function again
     };
-    var requestCurrentPlayerCount = function () {
+    let requestCurrentPlayerCount = function () {
         // call getRequest with the url and the callback function
         getRequest(proxyUrl + onlinePlayersUrl, currentPlayerCountData);
         //setTimeout(requestTotalAccounts, 5000); // set a timer (5s) to call this same function again
@@ -51,7 +51,7 @@ window.addEventListener('load', function () {
 
     function getTotalCombat() {
         // '+' is shorthand for parseFloat()
-        var hitpoints = +document.getElementById("hitpoints").value,
+        let hitpoints = +document.getElementById("hitpoints").value,
             attack = +document.getElementById("attack").value,
             strength = +document.getElementById("strength").value,
             defence = +document.getElementById("defence").value,
@@ -84,7 +84,10 @@ window.addEventListener('load', function () {
     }
 
     function getStatsForPlayer(data) {
-        var skillName = 0,
+
+        console.log("PROBLEM");
+
+        let skillName = 0,
             arrayOfStats = data.split(','),
             arrayOfExperience = [],
             arrayOfRank = [],
@@ -97,9 +100,10 @@ window.addEventListener('load', function () {
             allClue = +easyClue + +mediumClue + +hardClue + +eliteClue + +masterClue,
             displayStats = "<ul class='leftColSkill'>";
         //sliced before clue scrolls
-        var arrayOfStatsNoClues = arrayOfStats.slice(0, 48);
-        for (var i = 1; i <= arrayOfStatsNoClues.length - 1; i++) {
-            var xp = i + 1;
+        let arrayOfStatsNoClues = arrayOfStats.slice(0, 48);
+
+        for (let i = 1; i <= arrayOfStatsNoClues.length - 1; i++) {
+            let xp = i + 1;
             if ((i + 1) % 2 === 0) {
                 if (xp <= arrayOfStatsNoClues.length - 1) {
                     //split experience and rank into separate arrays
@@ -175,8 +179,8 @@ window.addEventListener('load', function () {
 
     /* NOT USED CURRENTLY
     function indexOfSmallest(a) {
-        var lowest = 0;
-        for (var i = 1; i < a.length; i++) {
+        let lowest = 0;
+        for (let i = 1; i < a.length; i++) {
             if (a[i] < a[lowest]) {
                 lowest = i;
             }
@@ -187,10 +191,10 @@ window.addEventListener('load', function () {
 
     /* NOT WORKING CURRENTLY
     function differenceToNextLevel(currentXp, neededXp) {
-        var arrayOfDifference = [],
+        let arrayOfDifference = [],
             difference = 0;
-        for (var a = 1; a < currentXp.length; a++) {
-            for (var b = 0; b < neededXp.length; b++) {
+        for (let a = 1; a < currentXp.length; a++) {
+            for (let b = 0; b < neededXp.length; b++) {
                 if (currentXp[a] < neededXp[b] && currentXp[a] > neededXp[b - 1]) {
                     difference = neededXp[b] - currentXp[a];
                     arrayOfDifference.push(difference);
